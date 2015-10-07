@@ -1,9 +1,11 @@
 # show all questions
-get '/questions' do 
+get '/questions' do
+
+	erb :"questions/index", :layout => :"questions/layout.html"
 end
 
 # show specific questions
-get '/questions/:id' do 
+get '/questions/:id' do
 end
 
 # create new questions
