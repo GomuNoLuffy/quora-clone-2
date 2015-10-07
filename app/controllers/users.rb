@@ -1,28 +1,39 @@
 # show all users
-get '/users' do 
+#get '/users' do 
+#end
+helpers do
+  def current_user
+    if session[:user_id]
+      @current_user ||= User.find_by_id(session[:user_id])
+    end
+  end
+
+  # Returns true if current_user exists, false otherwise
+  def logged_in?
+    !current_user.nil?
+  end
+end
+
+# put create user route before users/id roud
+get '/users/new' do
+ 	erb :"users/new", :layout => :"users/layout.html"
 end
 
 # show specific user
 get '/users/:id' do 
-end
 
-# check user authentication
-post '/login' do
-	@login = User.authenticate(params[:email], params[:password])
-	case @login
-	when username_invalid
-	when password_invalid
-	else 
-		session[:userId] = @login
-		redirect to ('/home')
-	end
+ 	erb :"users/profile", :layout => :"users/layout.html"
 end
 
 # create new user
-post '/signup' do 
-	@user = User.create!(params[:email], params[:password])
-	@message = "Signed up. You may now login."
-	redirect to('/home')
+post '/users' do 
+	@user = User.new(params[:user])
+	if @user.save
+		redirect to('/')
+	else
+		session[:error] = "Email has already been used"
+		redirect to('/users/new')
+	end
 end
 
 # change existing user info

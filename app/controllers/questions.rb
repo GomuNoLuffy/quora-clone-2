@@ -1,6 +1,5 @@
 # show all questions
 get '/questions' do
-
 	erb :"questions/index", :layout => :"questions/layout.html"
 end
 

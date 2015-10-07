@@ -1,0 +1,15 @@
+<h1>Quora Clone</h1>
+
+<% if session[:error] != nil %>
+	<h2>Errors: <%= session[:error] %></h2>
+<% end %>
+
+<form action="/users" method="post">
+	<p> Please input your desired email</p>
+
+	<input type="text" name="user[email]">
+	<p> Please input your desired password</p>
+
+	<input type="text" name="user[password]">
+	<input type="submit" value="Sign Up!">
+</form>
