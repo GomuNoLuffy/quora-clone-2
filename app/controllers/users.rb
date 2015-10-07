@@ -27,6 +27,7 @@ end
 
 # create new user
 post '/users' do 
+	session[:error] = nil
 	@user = User.new(params[:user])
 	if @user.save
 		redirect to('/')
