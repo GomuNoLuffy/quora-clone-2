@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	# This is Sinatra! Remember to create a migration!
 	has_many :questions
 	has_many :answers
-    validates :email, uniqueness: true, format: (with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
+    validates :email, uniqueness: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
 
   def self.authenticate(email , password)
     # if email and password correspond to a valid user, return that user

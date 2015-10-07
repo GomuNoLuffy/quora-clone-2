@@ -1,9 +1,8 @@
 get '/' do
-	puts "[LOG] #{current_user.inspect}"
-	if session[:user_id] == nil
-  		redirect to('/session/new')
-  	else
+	if logged_in?
   		redirect to("users/#{session[:user_id]}")
+  	else
+  		redirect to('/session/new')
   	end
 end
 
@@ -16,9 +15,9 @@ post '/session' do
 	@login = User.authenticate(params[:user]["email"], params[:user]["password"])
 	case @login
 	when "username_invalid"
-		session[:error]="Invalid Username entered"
+		session[:error]="Invalid username entered"
 	when "password_invalid"
-		session[:error]="Invalid Password entered for username #{params[:user]["email"]}"
+		session[:error]="Invalid password entered for username #{params[:user]["email"]}"
 	else 
 		session[:user_id] = @login
 	end

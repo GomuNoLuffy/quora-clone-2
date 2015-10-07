@@ -1,19 +1,6 @@
 # show all users
 #get '/users' do 
 #end
-helpers do
-  def current_user
-    if session[:user_id]
-      @current_user ||= User.find_by_id(session[:user_id])
-    end
-  end
-
-  # Returns true if current_user exists, false otherwise
-  def logged_in?
-    !current_user.nil?
-  end
-end
-
 # put create user route before users/id roud
 get '/users/new' do
  	erb :"users/new", :layout => :"users/layout.html"
@@ -21,7 +8,6 @@ end
 
 # show specific user
 get '/users/:id' do 
-
  	erb :"users/profile", :layout => :"users/layout.html"
 end
 
@@ -32,7 +18,7 @@ post '/users' do
 	if @user.save
 		redirect to('/')
 	else
-		session[:error] = "Email has already been used"
+		session[:error] = @user.errors.full_messages[0]
 		redirect to('/users/new')
 	end
 end
