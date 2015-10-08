@@ -36,6 +36,7 @@ set :logging, true
 set :dump_errors, false
 set :app_file, __FILE__
 enable :sessions
+set :session_secret, 'this is a secret shhhhh'
 
 # Setup Models (M) and its database
 require APP_ROOT.join('config', 'database')

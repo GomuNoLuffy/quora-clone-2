@@ -3,6 +3,11 @@ get '/questions' do
 	erb :"questions/index", :layout => :"questions/layout.html"
 end
 
+# page for submitting new question
+get '/questions/new' do
+	erb :"questions/new", :layout => :"questions/layout.html"
+end
+
 # show specific questions
 get '/questions/:id' do
 end
