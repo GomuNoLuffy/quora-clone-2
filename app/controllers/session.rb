@@ -1,27 +1,30 @@
 get '/' do
 	if logged_in?
-  		redirect to("users/#{session[:user_id]}")
+		redirect to('/questions')
+  		#redirect to("users/#{session[:user_id]}")
   	else
   		redirect to('/session/new')
   	end
 end
 
 get '/session/new' do
- 	erb :"session/login", :layout => :"session/layout.html"
+	@page_title = "Quora Clone: Login"
+ 	erb :"session/login"
 end
 
 post '/session' do
-	session[:error] = nil
 	@login = User.authenticate(params[:user]["email"], params[:user]["password"])
 	case @login
 	when "username_invalid"
-		session[:error]="Invalid username entered"
+		@error ="Invalid username entered"
+		erb :"session/login"
 	when "password_invalid"
-		session[:error]="Invalid password entered for username #{params[:user]["email"]}"
+		@error ="Invalid password entered for username #{params[:user]["email"]}"
+		erb :"session/login"
 	else 
 		session[:user_id] = @login
-	end
-	redirect to ('/')
+		redirect to ('/')
+	end	
 end
 
 delete '/session' do
@@ -31,7 +34,6 @@ end
 
 get '/session/reset' do
 	session[:user_id] = nil
-	session[:error] = nil
 	redirect to('/')
 end
 

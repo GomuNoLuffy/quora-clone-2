@@ -1,19 +1,33 @@
 # show all questions
 get '/questions' do
-	erb :"questions/index", :layout => :"questions/layout.html"
+	@page_title = "Quora Clone: Homepage"
+	@list = Question.all.order(id: :desc).limit(10)
+	erb :"questions/all"
 end
 
 # page for submitting new question
 get '/questions/new' do
-	erb :"questions/new", :layout => :"questions/layout.html"
+	@page_title = "Submit Your question"
+	erb :"questions/new"
 end
 
 # show specific questions
 get '/questions/:id' do
+	@question = Question.find_by(id: params[:id])
+	erb :"questions/view"
 end
 
 # create new questions
-post '/questions' do 
+post '/questions' do
+	@input = params[:question]
+	@input["user_id"] = current_user.id
+	@question = Question.new(@input)
+	if @question.save
+		redirect to('/')
+	else
+		@error = @question.errors.full_messages[0]
+		erb :"questions/new"
+	end
 end
 
 # change existing questions info

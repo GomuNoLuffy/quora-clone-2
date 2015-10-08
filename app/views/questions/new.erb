@@ -1,20 +1,16 @@
-<h1>Make Your Guess!</h1>
-<% if @ended == true %>
-	<p>All cards have been attempted.</p>
-	<p><a href="/all_rounds">Click here to return to score screen</a></p>
-<% else %>
-	<p>Please fill in the capital city of the country below:</p>
-	<p>Definition: <%= @definition %><p>
-	<% if @result == nil %>
-		<form action="/guess/check" method="post">
-			<input type="text" name="input">
-			<input type="submit" value="submit">
-		</form>
+<p>Please submit your question</p>
 
-	<% else %>
-	<p>Your answer is <%= @result %> </p>
-		<p><a href="/guess/question">Next Question</a></p>
-		<p><a href="/all_rounds">Click here to return to score screen</a></p>
-	<% end %>
+<% if @error != nil %>
+	<h2>Errors: <%= @error %></h2>
 <% end %>
-<%= @guess.id %>
+
+<form action="/questions" method="post">
+	<p> Title(maximum 255 characters): </p>
+
+	<input type="text" name="question[title]">
+	<p> Description of question</p>
+
+	<input type="tex" name="question[description]">
+	<br><br>
+	<input type="submit" value="submit">
+</form>

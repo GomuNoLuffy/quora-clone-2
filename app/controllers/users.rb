@@ -3,23 +3,24 @@
 #end
 # put create user route before users/id roud
 get '/users/new' do
- 	erb :"users/new", :layout => :"users/layout.html"
+	@page_title = "Quora Clone: Registration"
+ 	erb :"users/new"
 end
 
 # show specific user
 get '/users/:id' do 
- 	erb :"users/profile", :layout => :"users/layout.html"
+	@page_title = "Quora Clone: User Profile"
+ 	erb :"users/profile"
 end
 
 # create new user
 post '/users' do 
-	session[:error] = nil
 	@user = User.new(params[:user])
 	if @user.save
 		redirect to('/')
 	else
-		session[:error] = @user.errors.full_messages[0]
-		redirect to('/users/new')
+		@error = @user.errors.full_messages[0]
+		erb :"users/new"
 	end
 end
 

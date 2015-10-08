@@ -1,7 +1,5 @@
-<h1>Quora Clone</h1>
-
-<% if session[:error] != nil %>
-	<h2>Errors: <%= session[:error] %></h2>
+<% if @error != nil %>
+	<h2>Errors: <%= @error %></h2>
 <% end %>
 
 <form action="/session" method="post">

@@ -1,0 +1,7 @@
+<p><a href="/questions/new">Submit Your Question Now!</a></p>
+
+<h2>List of submitted Questions</h2>
+<% @list.each do |question|%>
+	<p>Title: <a href="/questions/<%= question.id %>"><%= question.title %></a></p>
+	<p>Description: <%= question.description %></p>
+<% end %>
