@@ -28,3 +28,10 @@ end
 # delete answer records from database
 delete '/answers/:id' do 
 end
+
+get '/users/:id/answers' do
+	@user = User.find_by(id: params[:id])
+	@answers_list = Answer.where(user_id: @user.id).order(updated_at: :desc)
+	@page_title = "Quora Clone: My Answers"
+	erb :"answers/myanswers"
+end

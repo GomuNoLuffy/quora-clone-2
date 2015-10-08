@@ -1,0 +1,5 @@
+<h2>My Questions</h2>
+<% @questions_list.each do |question|%>
+	<p>Title: <a href="/questions/<%= question.id %>"><%= question.title %></a></p>
+	<p>Description: <%= question.description %></p>
+<% end %>

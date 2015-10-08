@@ -4,3 +4,6 @@
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Logout">
 </form>
+
+<p><a href="/users/<%= current_user.id %>/questions"> My Questions</a></p>
+<p><a href="/users/<%= current_user.id %>/answers"> My Answers</a></p>
