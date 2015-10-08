@@ -3,12 +3,15 @@
 <% end %>
 
 <form action="/users" method="post">
+	<p> Please input your desired username</p>
+	<input type="text" name="user[username]">
+
 	<p> Please input your desired email</p>
-
 	<input type="text" name="user[email]">
-	<p> Please input your desired password</p>
 
+	<p> Please input your desired password</p>
 	<input type="password" name="user[password]">
+
 	<br><br>
 	<input type="submit" value="Sign Up!">
 </form>
