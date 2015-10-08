@@ -27,9 +27,9 @@ post '/session' do
 	end	
 end
 
-delete '/session' do
+delete '/session/destroy' do
 	session[:user_id] = nil
-	redirect to('/')
+	true
 end
 
 get '/session/reset' do

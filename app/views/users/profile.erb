@@ -1,9 +1,4 @@
 <h1>Welcome <%= current_user.username %></h1>
 
-<form action="/session" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Logout">
-</form>
-
 <p><a href="/users/<%= current_user.id %>/questions"> My Questions</a></p>
 <p><a href="/users/<%= current_user.id %>/answers"> My Answers</a></p>

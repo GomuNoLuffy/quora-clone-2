@@ -10,15 +10,67 @@
   <!--
     application.css is where you put your styles
   -->
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="/js/bootstrap.min.js"></script>
+
   <title><%= @page_title %></title>
 </head>
-<body
-  <h1>Quora Clone</h1>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Quora Clone</a>
+      </div>
+
+      <div id="header-navbar">
+<!-- display if logged in -->
+        <% if logged_in? %>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"> <%= current_user.username %> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/users/<%= current_user.id %>">My Profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#" id="logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+<!-- display if not logged in -->
+        <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/users/new"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Signup</a></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+              <ul class="dropdown-menu">
+                <li class="login-form">
+                  <form action="/session" method="post">
+                    <p>Please sign in</p>
+                    <input type="email" placeholder="Email address" required autofocus name="user[email]">
+                    <br><br>
+                    <input type="password" placeholder="Password" required name="user[password]">
+                    <br><br>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                  </form>
+                </li>
+              </ul>
+          </li>
+        </ul>
+        <% end %>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
   <%= yield %>
 </body>
 </html>

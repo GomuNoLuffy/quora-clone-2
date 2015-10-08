@@ -1,17 +1,20 @@
-<% if @error != nil %>
-	<h2>Errors: <%= @error %></h2>
-<% end %>
+<div class="container">
 
-<form action="/users" method="post">
-	<p> Please input your desired username</p>
-	<input type="text" name="user[username]">
+	<% if @error != nil %>
+		<h2>Errors: <%= @error %></h2>
+	<% end %>
 
-	<p> Please input your desired email</p>
-	<input type="text" name="user[email]">
+	<form action="/users" method="post">
+		<p> Please input your desired username</p>
+		<input type="text" name="user[username]">
 
-	<p> Please input your desired password</p>
-	<input type="password" name="user[password]">
+		<p> Please input your desired email</p>
+		<input type="text" name="user[email]">
 
-	<br><br>
-	<input type="submit" value="Sign Up!">
-</form>
+		<p> Please input your desired password</p>
+		<input type="password" name="user[password]">
+
+		<br><br>
+		<input type="submit" value="Sign Up!">
+	</form>
+</div>
