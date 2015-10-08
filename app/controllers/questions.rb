@@ -14,6 +14,7 @@ end
 # show specific question
 get '/questions/:id' do
 	@question = Question.find_by(id: params[:id])
+	@answers_list = Answer.where(question_id: params[:id]).order(updated_at: :desc)
 	@page_title = "Quora Clone: #{@question.title}"
 	erb :"questions/view"
 end
@@ -32,9 +33,9 @@ post '/questions' do
 end
 
 # change existing questions info
-puts '/questions/:id' do 
-end
+#puts '/questions/:id' do 
+#end
 
 # delete questions records from database
-delete '/questions/:id' do 
-end
+#delete '/questions/:id' do 
+#end

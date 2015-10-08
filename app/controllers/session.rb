@@ -16,7 +16,7 @@ post '/session' do
 	@login = User.authenticate(params[:user]["email"], params[:user]["password"])
 	case @login
 	when "username_invalid"
-		@error ="Invalid username entered"
+		@error ="Invalid email entered"
 		erb :"session/login"
 	when "password_invalid"
 		@error ="Invalid password entered for username #{params[:user]["email"]}"

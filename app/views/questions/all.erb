@@ -1,3 +1,4 @@
+<p><a href="users/<%= current_user.id %>">View User Profile</a></p>
 <form action="/session" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Logout">
@@ -5,7 +6,7 @@
 
 <p><a href="/questions/new">Submit Your Question Now!</a></p>
 
-<h2>List of submitted Questions</h2>
+<h2>Latest Activity</h2>
 <% @list.each do |question|%>
 	<p>Title: <a href="/questions/<%= question.id %>"><%= question.title %></a></p>
 	<p>Description: <%= question.description %></p>
