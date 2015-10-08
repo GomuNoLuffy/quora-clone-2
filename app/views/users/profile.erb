@@ -1,6 +1,28 @@
 <div class="container page-width">
 	<h1>Welcome <%= current_user.username %></h1>
 
-	<p><a href="/users/<%= current_user.id %>/questions"> My Questions</a></p>
-	<p><a href="/users/<%= current_user.id %>/answers"> My Answers</a></p>
+	<div>
+		<ul class="nav nav-tabs" role="tablist">
+	        <li role="presentation" id="myquestions"><a href="">My Questions</a></li>
+	        <li role="presentation" id="myanswers"><a href="">My Answers</a></li>
+		</ul>
+		<div class="profile-content">
+
+		</div>
+	</div>
 </div>
+
+<script>
+$(this).load(function(){
+	var link      = window.location.href + "/questions";
+      	$.ajax({
+		    url: link,
+		    method: "GET",
+		    cache: false,
+		    success: function(response){
+		    	$html = $.parseHTML( response )
+		    	$('.profile-content').html($html)
+		    }
+	});
+});
+</script>

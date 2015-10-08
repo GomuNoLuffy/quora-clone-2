@@ -44,5 +44,5 @@ get '/users/:id/questions' do
 	@user = User.find_by(id: params[:id])
 	@questions_list = Question.where(user_id: @user.id).order(updated_at: :desc)
 	@page_title = "Quora Clone: My Questions"
-	erb :"questions/myquestions"
+	return erb :"questions/myquestions", :layout => false 
 end

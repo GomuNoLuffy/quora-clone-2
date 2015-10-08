@@ -5,6 +5,39 @@ $(document).ready(function(){
 		function(){ $(this).removeClass("active"); }
 		);
 
+	$('.nav-tabs li').hover(
+		function(){ $(this).addClass("active"); },
+		function(){ $(this).removeClass("active"); }
+		);
+
+	$('#myquestions').hover(function(){
+		var link      = window.location.href + "/questions";
+      	$.ajax({
+		    url: link,
+		    method: "GET",
+		    cache: false,
+		    success: function(response){
+		    	$html = $.parseHTML( response )
+		    	$('.profile-content').html($html)
+		    }
+		});
+		return false;
+	});
+
+	$('#myanswers').hover(function(){
+		var link      = window.location.href + "/answers";
+      	$.ajax({
+		    url: link,
+		    method: "GET",
+		    cache: false,
+		    success: function(response){
+		    	$html = $.parseHTML( response )
+		    	$('.profile-content').html($html)
+		    }
+		});
+		return false;
+	});
+
 	$('#logout').click(function(){
       	$.ajax({
 		    url: "/session/destroy",
@@ -15,4 +48,6 @@ $(document).ready(function(){
 		    }
 		});
 	});
+
+
 });
