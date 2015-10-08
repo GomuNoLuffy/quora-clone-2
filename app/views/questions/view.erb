@@ -1,4 +1,5 @@
 <h3>Title <%= @question.title %></h3>
 <p><%= @question.description %></p>
+<p>Question submitted by: <%= @question.user.email %></p>
 
 <p><a href="/questions">Back to all questions</a></p>

@@ -11,7 +11,7 @@ get '/questions/new' do
 	erb :"questions/new"
 end
 
-# show specific questions
+# show specific question
 get '/questions/:id' do
 	@question = Question.find_by(id: params[:id])
 	@page_title = "Quora Clone: #{@question.title}"
