@@ -10,7 +10,7 @@ $(document).ready(function(){
 		function(){ $(this).removeClass("active"); }
 		);
 
-	$('#myquestions').hover(function(){
+	$('#myquestions').on('click hover', function () {
 		var link      = window.location.href + "/questions";
       	$.ajax({
 		    url: link,
@@ -24,7 +24,7 @@ $(document).ready(function(){
 		return false;
 	});
 
-	$('#myanswers').hover(function(){
+	$('#myanswers').on('click hover', function () {
 		var link      = window.location.href + "/answers";
       	$.ajax({
 		    url: link,
