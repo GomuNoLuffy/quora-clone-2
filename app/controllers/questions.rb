@@ -1,7 +1,7 @@
 # show all questions
 get '/questions' do
 	@page_title = "Quora Clone: Homepage"
-	@list = Question.all.order(id: :desc).limit(10)
+	@list = Question.all.order(updated_at: :desc).limit(10)
 	erb :"questions/all"
 end
 
