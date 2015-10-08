@@ -1,9 +1,19 @@
-<p><a href="users/<%= current_user.id %>">View User Profile</a></p>
 
-<p><a href="/questions/new">Submit Your Question Now!</a></p>
-
-<h2>Latest Activity</h2>
-<% @list.each do |question|%>
-	<p>Title: <a href="/questions/<%= question.id %>"><%= question.title %></a></p>
-	<p>Description: <%= question.description %></p>
-<% end %>
+<div class="container page-width">
+	<div>
+		<p><a href="/questions/new">Submit Your Question Now!</a></p>
+		<h2>Most Recent Questions</h2>
+		<br>
+	</div>
+	<div>
+		<ul class="list-group">
+			<% @list.each do |question|%>
+			  <li class="list-group-item">
+				  <span class="emphasize"><a href="/questions/<%= question.id %>"><%= question.title %></a></span>
+				  <br>
+				  <span class="norm"><%= question.description %></span>
+			  </li>
+		 	<% end %>
+		</ul>
+	<div>
+</div>

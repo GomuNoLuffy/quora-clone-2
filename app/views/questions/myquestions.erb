@@ -1,5 +1,14 @@
-<h2>My Questions</h2>
-<% @questions_list.each do |question|%>
-	<p>Title: <a href="/questions/<%= question.id %>"><%= question.title %></a></p>
-	<p>Description: <%= question.description %></p>
-<% end %>
+<div class="container page-width">
+	<h2>My Questions</h2>
+	<div>
+		<ul class="list-group">
+			<% @questions_list.each do |question|%>
+			  <li class="list-group-item">
+				  <span class="emphasize"><a href="/questions/<%= question.id %>"><%= question.title %></a></span>
+				  <br>
+				  <span class="norm"><%= question.description %></span>
+			  </li>
+		 	<% end %>
+		</ul>
+	<div>
+</div>

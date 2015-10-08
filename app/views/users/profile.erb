@@ -1,4 +1,6 @@
-<h1>Welcome <%= current_user.username %></h1>
+<div class="container page-width">
+	<h1>Welcome <%= current_user.username %></h1>
 
-<p><a href="/users/<%= current_user.id %>/questions"> My Questions</a></p>
-<p><a href="/users/<%= current_user.id %>/answers"> My Answers</a></p>
+	<p><a href="/users/<%= current_user.id %>/questions"> My Questions</a></p>
+	<p><a href="/users/<%= current_user.id %>/answers"> My Answers</a></p>
+</div>

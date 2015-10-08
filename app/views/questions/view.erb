@@ -1,22 +1,33 @@
-<p><a href="users/<%= current_user.id %>">View User Profile</a></p>
+<div class="container page-width">
+	<div>
+		<h3 class="emphasize" ><%= @question.title %></h3>
+		<p class="normal"><%= @question.description %></p>
+		<p class="small">Question submitted by: <%= @question.user.username %></p>
+		<ul class="list-group">
+			<!-- this is chosen question -->
 
-<h3>Title <%= @question.title %></h3>
-<p><%= @question.description %></p>
-<p>Question submitted by: <%= @question.user.username %></p>
+			<!-- this is answer submission form -->
+			<li class="list-group-item">
+				<p>Submit Your Answer!</p>
+				<form action="/answers" method="post">
+					<input type="hidden" name=answer[question_id] value="<%= @question.id %>">
+					<input type="text" name="answer[description]">
+					<br><br>
+					<input type="submit" value="submit">
+				</form>
+			</li>
 
-<p>Please submit your answer</p>
+			<!-- this is all answers for this question-->
+			<li class="list-group-item"><h3>Submitted Answers</h3></li>
+			<% @answers_list.each do |answer|%>
+			<li class="list-group-item">
+				  <span class="norm">Submitted By: <%= answer.user.username %></a></span>
+				  <br>
+				  <span class="small"><%= answer.description %></span>
+			</li>
+		 	<% end %>
+		</ul>
+	<div>
 
-<form action="/answers" method="post">
-	<input type="hidden" name=answer[question_id] value="<%= @question.id %>">
-	<input type="text" name="answer[description]">
-	<br><br>
-	<input type="submit" value="submit">
-</form>
-
-<h2>Submitted Answers</h2>
-<% @answers_list.each do |answer|%>
-	<p>Submitted By: <%= answer.user.username %></p>
-	<p>Description: <%= answer.description %></p>
-<% end %>
-
-<p><a href="/questions">Back to all questions</a></p>
+	<p><a href="/questions">Back to all questions</a></p>
+</div>

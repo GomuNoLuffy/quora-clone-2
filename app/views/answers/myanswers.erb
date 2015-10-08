@@ -1,5 +1,14 @@
-<h2>My Answers</h2>
-<% @answers_list.each do |answer|%>
-	<p>Question: <a href="/questions/<%= answer.question.id %>"><%= answer.question.title %></a></p>
-	<p>My answer: <%= answer.description %></p>
-<% end %>
+<div class="container page-width">
+	<h2>My Answers</h2>
+	<div>
+		<ul class="list-group">
+			<% @answers_list.each do |answer|%>
+			  <li class="list-group-item">
+				  <span class="emphasize">Question: <a href="/questions/<%= answer.question.id %>"><%= answer.question.title %></a></span>
+				  <br>
+				  <span class="norm">My answer: <%= answer.description %></span>
+			  </li>
+		 	<% end %>
+		</ul>
+	<div>
+</div>
