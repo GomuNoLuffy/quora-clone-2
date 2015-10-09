@@ -9,4 +9,11 @@ helpers do
   def logged_in?
     !current_user.nil?
   end
+
+  def check_submitted?(answer_list)
+  	users_submitted = []
+  	answer_list.each { |x| users_submitted << x.user_id } 
+  	return false if users_submitted.include?(current_user.id)
+  	return true
+  end
 end

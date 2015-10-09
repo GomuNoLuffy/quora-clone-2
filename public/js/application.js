@@ -15,7 +15,6 @@ $(document).ready(function(){
       	$.ajax({
 		    url: link,
 		    method: "GET",
-		    cache: false,
 		    success: function(response){
 		    	$html = $.parseHTML( response )
 		    	$('.profile-content').html($html)
@@ -29,9 +28,10 @@ $(document).ready(function(){
       	$.ajax({
 		    url: link,
 		    method: "GET",
-		    cache: false,
 		    success: function(response){
+		    	console.log(response)
 		    	$html = $.parseHTML( response )
+		    	console.log($html)
 		    	$('.profile-content').html($html)
 		    }
 		});
