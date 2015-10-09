@@ -38,3 +38,7 @@
 .title-form {
 	width: 100%;
 }
+
+.inline-form{ 
+	display: inline; 
+}

@@ -21,8 +21,8 @@ end
 
 # create new questions
 post '/questions' do
-	@input = params[:question]
-	@input["user_id"] = current_user.id
+	@input = add_user_id(params[:question])
+	byebug
 	@question = Question.new(@input)
 	if @question.save
 		redirect to('/')

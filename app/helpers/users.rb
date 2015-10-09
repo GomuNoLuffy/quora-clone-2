@@ -16,4 +16,9 @@ helpers do
   	return false if users_submitted.include?(current_user.id)
   	return true
   end
+
+  def add_user_id(hash)
+    hash.merge({"user_id" => current_user.id})
+  end
+
 end

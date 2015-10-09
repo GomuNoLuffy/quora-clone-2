@@ -8,10 +8,8 @@
 
 # create new answer
 post '/answers' do 
-	@input = params[:answer]
-	@input["user_id"] = current_user.id
-	puts "[LOG] @input is #{@input.inspect}}"
-	@answer = Answer.new(params[:answer])
+	@input = add_user_id(params[:answer])
+	@answer = Answer.new(@input)
 	if @answer.save
 		redirect to("questions/#{@input["question_id"]}")
 	else 

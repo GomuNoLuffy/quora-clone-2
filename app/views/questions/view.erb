@@ -1,8 +1,23 @@
 <div class="container page-width">
 	<div>
 		<h3 class="emphasize" ><%= @question.title %></h3>
-		<p class="normal"><%= @question.description %></p>
 		<p class="small">Question submitted by: <%= @question.user.username %></p>
+		<p class="normal"><%= @question.description %></p>
+		<p class="small">
+			Upvotes: <%= count_question_upvotes(@question) %> 
+			Downvotes: <%= count_question_downvotes(@question) %>
+		</p>
+
+		<form action="/questionvotes/upvote" method="post" class="inline-form">
+			<input type="hidden" name=questionvote[question_id] value="<%= @question.id %>">
+			<input type="hidden" name=questionvote[updown] value="true">
+			<input type="submit" value="Upvote">
+		</form>
+		<form action="/questionvotes/downvote" method="post" class="inline-form">
+			<input type="hidden" name=questionvote[question_id] value="<%= @question.id %>">
+			<input type="hidden" name=questionvote[updown] value="false">
+			<input type="submit" value="Downvote">
+		</form>
 		<ul class="list-group">
 			<!-- this is chosen question -->
 
@@ -26,6 +41,22 @@
 				  <span class="norm">Submitted By: <%= answer.user.username %></a></span>
 				  <br>
 				  <span class="small"><%= answer.description %></span>
+
+				  	<p class="small">
+						Upvotes: <%= count_answer_upvotes(answer) %> 
+						Downvotes: <%= count_answer_downvotes(answer) %>
+					</p>
+
+					<form action="/answervotes/upvote" method="post" class="inline-form">
+						<input type="hidden" name=answervote[answer_id] value="<%= answer.id %>">
+						<input type="hidden" name=answervote[updown] value="true">
+						<input type="submit" value="Upvote">
+					</form>
+					<form action="/answervotes/downvote" method="post" class="inline-form">
+						<input type="hidden" name=answervote[answer_id] value="<%= answer.id %>">
+						<input type="hidden" name=answervote[updown] value="false">
+						<input type="submit" value="Downvote">
+					</form>
 			</li>
 		 	<% end %>
 		</ul>
