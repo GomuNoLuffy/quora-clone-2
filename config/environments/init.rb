@@ -11,11 +11,13 @@ require 'pathname'
 	# database
 require 'pg'
 require 'active_record'
+require 'byebug'
 require 'logger'
 
 	# sinatra
 require 'sinatra'
 require "sinatra/reloader" if development?
+require 'action_view'
 
 	# embedded ruby
 require 'erb'
@@ -43,6 +45,7 @@ require APP_ROOT.join('config', 'database')
 
 # Setup helper (H)
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
+helpers ActionView::Helpers::FormTagHelper
 
 # Setup views (V)
 set :views, File.join(APP_ROOT, "app", "views")

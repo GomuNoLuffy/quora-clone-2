@@ -2,7 +2,7 @@
 	<div>
 		<h3 class="emphasize" ><%= @question.title %></h3>
 		<p class="small">Question submitted by: <%= @question.user.username %></p>
-		<p class="normal"><%= @question.description %></p>
+		<span class="more"><p class="normal"><%= simple_format(@question.description) %></p></span>
 		<p class="small">
 			Upvotes: <%= count_question_upvotes(@question) %> 
 			Downvotes: <%= count_question_downvotes(@question) %>

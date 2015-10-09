@@ -15,6 +15,8 @@ gem 'activerecord'
 gem 'activesupport'
 gem 'sinatra-activerecord'
 
+# Adding ActionView
+gem 'actionview'
 # Adding Database elements
 gem 'pg'
 
