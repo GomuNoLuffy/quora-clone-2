@@ -42,3 +42,12 @@
 .inline-form{ 
 	display: inline; 
 }
+
+a.morelink {
+    text-decoration:none;
+    outline: none;
+}
+
+.morecontent span {
+    display: none;
+}
