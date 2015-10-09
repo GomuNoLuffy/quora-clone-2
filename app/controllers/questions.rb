@@ -22,7 +22,9 @@ end
 # create new questions
 post '/questions' do
 	@input = add_user_id(params[:question])
-	byebug
+	@question_split = @input["description"].split("\n", 2)
+	@input["title"] = @question_split[0]
+	@input["description"] = @question_split[1]
 	@question = Question.new(@input)
 	if @question.save
 		redirect to('/')
