@@ -5,10 +5,17 @@ $(document).ready(function(){
 		function(){ $(this).removeClass("active"); }
 		);
 
-	$('.nav-tabs li').hover(
-		function(){ $(this).addClass("active"); },
-		function(){ $(this).removeClass("active"); }
-		);
+	$('.nav-tabs li:nth-child(1)').hover(
+		function(){ 
+			$(this).addClass("active"); 
+			$('.nav-tabs li:nth-child(2)').removeClass("active");
+		});
+
+	$('.nav-tabs li:nth-child(2)').hover(
+		function(){ 
+			$(this).addClass("active"); 
+			$('.nav-tabs li:nth-child(1)').removeClass("active");
+		});
 
 	$('#myquestions').on('click hover', function () {
 		var link      = window.location.href + "/questions";
