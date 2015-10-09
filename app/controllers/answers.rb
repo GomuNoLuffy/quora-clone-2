@@ -22,12 +22,12 @@ post '/answers' do
 end
 
 # change existing answer info
-puts '/answers/:id' do 
-end
+#puts '/answers/:id' do 
+#end
 
 # delete answer records from database
-delete '/answers/:id' do 
-end
+#delete '/answers/:id' do 
+#end
 
 get '/users/:id/answers' do
 	@user = User.find_by(id: params[:id])

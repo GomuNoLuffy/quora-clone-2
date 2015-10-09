@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
 	  	create_table :questions do |t|        
 	      t.references :user, index: true
 	      t.string :title
-	      t.string :description
+	      t.text :description
 
 	      t.timestamps null: false
 	    end
