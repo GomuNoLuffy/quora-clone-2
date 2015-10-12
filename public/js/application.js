@@ -150,5 +150,34 @@ $(document).ready(function(){
     if (last_child && last_child.is('p')) return last_child;
     return node;
   };
-});
+
+// Simple Modal section
+
+$('.questionvote').submit(function(){
+  $.ajax({
+  type: "POST",
+  url: "some.php",
+  data: "name=John&location=Boston",
+  success: function(msg){
+        alert( "Data Saved: " + msg );
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) {
+     alert("some error");
+  }
+  });
+
+$('.answervote').submit(function(){
+  $.ajax({
+  type: "POST",
+  url: "some.php",
+  data: "name=John&location=Boston",
+  success: function(msg){
+        alert( "Data Saved: " + msg );
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) {
+     alert("some error");
+  }
+  });
+
+})); 
 

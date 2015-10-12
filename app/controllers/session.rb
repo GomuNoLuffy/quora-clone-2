@@ -1,10 +1,6 @@
 get '/' do
-	if logged_in?
-		redirect to('/questions')
-  		#redirect to("users/#{session[:user_id]}")
-  	else
-  		redirect to('/session/new')
-  	end
+	redirect to('/questions')
+  	#redirect to("users/#{session[:user_id]}")
 end
 
 get '/session/new' do
