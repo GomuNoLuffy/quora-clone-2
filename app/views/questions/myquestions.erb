@@ -6,7 +6,7 @@
 			  <li class="list-group-item">
 				  <span class="emphasize"><a href="/questions/<%= question.id %>"><%= question.title %></a></span>
 				  <br>
-				  <span class="norm"><%= question.description %></span>
+				  <span class="norm more"><%= simple_format(question.description) %></span>
 			  </li>
 		 	<% end %>
 		</ul>
