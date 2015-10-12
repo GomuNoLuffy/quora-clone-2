@@ -1,7 +1,7 @@
 <div class="container page-width">
 	<div>
 		<p><a href="/questions/new">Submit Your Question Now!</a></p>
-		<h2>Most Recent Questions</h2>
+		<h2><%= @list_title %></h2>
 		<br>
 	</div>
 	<div>
@@ -10,7 +10,16 @@
 			  <li class="list-group-item">
 				  <span class="emphasize"><a href="/questions/<%= question.id %>"><%= question.title %></a></span>
 				  <br>
+				  <span class="small"><p>Tags: 
+				  <% if question.tags !=  nil %>
+					  <% question.tags.each do |tag| %>
+					  	<a href="/tags/<%= tag.id %>">
+					  	<%= tag.name %>,
+					  	</a>
+					  <% end %>
+				  <% end %>
 				  
+				  </p></span>
 				  <br>
 				  <% answer = question.answers.sample %>
 				  <span class="small more">

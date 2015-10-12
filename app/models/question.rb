@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
 	belongs_to :user
 	has_many :answers
 	has_many :question_votes
+	has_many :categories
+	has_many :tags, through: :categories
 	validates :title, length: { maximum: 255 }
-	has_many :tags through :questions_tags
 end

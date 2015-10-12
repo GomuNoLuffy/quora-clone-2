@@ -6,7 +6,7 @@ class ImplementTags < ActiveRecord::Migration
 	      t.timestamps null: false
 	  	end
 
-	  	create_table :questions_tags do |t|
+	  	create_table :categories do |t|
 		  t.references :question, index: true       
 	      t.references :tag, index: true
 

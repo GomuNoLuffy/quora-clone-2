@@ -1,6 +1,7 @@
 # show all questions
 get '/questions' do
 	@page_title = "Quora Clone: Homepage"
+	@list_title = "Most Recent Questions"
 	@list = Question.all.order(updated_at: :desc).limit(10)
 	erb :"questions/all"
 end
@@ -30,8 +31,13 @@ post '/questions' do
 	@input["title"] = @question_split[0]
 	@input["description"] = @question_split[1].gsub!(/\r\n?/, "\n") if @question_split.length > 1
 	@question = Question.new(@input)
-	puts "[LOG] @question #{@question.description.inspect}"
 	if @question.save
+		if params[:tag] != nil
+			@tags = params[:tag]
+			@tags.each_key { |key|
+				Category.create!(question_id: @question.id, tag_id: Tag.find_by(name: key).id)
+			}
+		end
 		redirect to('/')
 	else
 		@error = @question.errors.full_messages[0]
