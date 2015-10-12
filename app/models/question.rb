@@ -4,4 +4,5 @@ class Question < ActiveRecord::Base
 	has_many :answers
 	has_many :question_votes
 	validates :title, length: { maximum: 255 }
+	has_many :tags through :questions_tags
 end
