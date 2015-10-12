@@ -10,9 +10,17 @@
 			  <li class="list-group-item">
 				  <span class="emphasize"><a href="/questions/<%= question.id %>"><%= question.title %></a></span>
 				  <br>
-				  <p class="small">Submitted by: <%= question.user.username %></p>
+				  
 				  <br>
-				  <span class="norm more"><%= simple_format(question.description) %></span>
+				  <% answer = question.answers.sample %>
+				  <span class="small more">
+				  <% if answer == nil %>
+				  	<p style="color: red;">No answer given yet</p>
+				  <% else %>
+				  	<p class="norm">Answered by: <%= answer.user.username %></p>
+				  	<%= simple_format(answer.description) %>
+				  <% end %>
+				  </span>
 			  </li>
 		 	<% end %>
 		</ul>
