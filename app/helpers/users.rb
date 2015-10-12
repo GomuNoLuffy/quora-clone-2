@@ -11,6 +11,7 @@ helpers do
   end
 
   def check_submitted?(answer_list)
+    return true if !logged_in?
   	users_submitted = []
   	answer_list.each { |x| users_submitted << x.user_id } 
   	return false if users_submitted.include?(current_user.id)

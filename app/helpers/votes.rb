@@ -1,10 +1,11 @@
 helpers do
   def check_question_voted(question)
-    puts "[LOG] #{question.question_votes.where(user_id: current_user.id).inspect}"
+    return true if !logged_in?
     !question.question_votes.where(user_id: current_user.id).any?
   end
 
   def check_answer_voted(answer)
+    return true if !logged_in?
     !answer.answer_votes.where(user_id: current_user.id).any?
   end
 

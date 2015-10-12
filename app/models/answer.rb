@@ -3,5 +3,5 @@ class Answer < ActiveRecord::Base
 	belongs_to :question
 	belongs_to :user
 	has_many :answer_votes
-	validates :user_id, :uniqueness => {:scope => :question_id} # one user can only answer once for a question
+	validates :user_id, :uniqueness => {:scope => :question_id}, presence: true # one user can only answer once for a question
 end

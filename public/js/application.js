@@ -153,31 +153,39 @@ $(document).ready(function(){
 
 // Simple Modal section
 
-$('.questionvote').submit(function(){
-  $.ajax({
-  type: "POST",
-  url: "some.php",
-  data: "name=John&location=Boston",
-  success: function(msg){
-        alert( "Data Saved: " + msg );
-  },
-  error: function(XMLHttpRequest, textStatus, errorThrown) {
-     alert("some error");
-  }
+  $('.questionvote').submit(function(){
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr("action"),
+      data: $(this).serialize(),
+      success: function(){
+            location.reload();
+      },
+      error: function() {
+         console.log("entered error function");
+         location.reload();
+      }
+    });
+    return false;
   });
 
-$('.answervote').submit(function(){
-  $.ajax({
-  type: "POST",
-  url: "some.php",
-  data: "name=John&location=Boston",
-  success: function(msg){
-        alert( "Data Saved: " + msg );
-  },
-  error: function(XMLHttpRequest, textStatus, errorThrown) {
-     alert("some error");
-  }
+  $('.answervote').submit(function(){
+    console.log($(this));
+    console.log($(this).serialize());
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr("action"),
+      data: $(this).serialize(),
+      success: function(){
+            location.reload();
+      },
+      error: function() {
+         console.log("entered error function");
+         location.reload();
+      }
+    });
+    return false;
   });
-
-})); 
-
+});

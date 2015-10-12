@@ -12,12 +12,12 @@
 	<!-- this is the submit button -->
 		<% if check_question_voted(@question)%>
 		<div>
-			<form action="/questionvotes/vote" method="post" class="inline-form" >
+			<form action="/questionvotes/vote" method="post" class="inline-form" class = "questionvote" >
 				<input type="hidden" name=questionvote[question_id] value="<%= @question.id %>">
 				<input type="hidden" name=questionvote[updown] value="true">
 				<input type="submit" value="Upvote">
 			</form>
-			<form action="/questionvotes/vote" method="post" class="inline-form">
+			<form action="/questionvotes/vote" method="post" class="inline-form" class = "questionvote" >
 				<input type="hidden" name=questionvote[question_id] value="<%= @question.id %>">
 				<input type="hidden" name=questionvote[updown] value="false">
 				<input type="submit" value="Downvote">
@@ -55,12 +55,12 @@
 					</p>
 					<div>
 						<% if check_answer_voted(answer) %>
-							<form action="/answervotes/vote" method="post" class="inline-form">
+							<form action="/answervotes/vote" method="post" class="inline-form" class = "answervote" >
 								<input type="hidden" name=answervote[answer_id] value="<%= answer.id %>">
 								<input type="hidden" name=answervote[updown] value="true">
 								<input type="submit" value="Upvote">
 							</form>
-							<form action="/answervotes/vote" method="post" class="inline-form">
+							<form action="/answervotes/vote" method="post" class="inline-form" class = "answervote">
 								<input type="hidden" name=answervote[answer_id] value="<%= answer.id %>">
 								<input type="hidden" name=answervote[updown] value="false">
 								<input type="submit" value="Downvote">
