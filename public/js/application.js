@@ -153,39 +153,45 @@ $(document).ready(function(){
 
 // Simple Modal section
 
-  $('.questionvote').submit(function(){
+  var loginBox = function(){
+    $.ajax({
+      url: "/session/loginform",
+      data: null,
+      success: function(response){
+        var loginForm = $.parseHTML(response);
+        $.modal(loginForm);
+      },
+    });
+  };
 
+  $('.questionvote').submit(function(e){
+    e.preventDefault();
     $.ajax({
       type: "POST",
       url: $(this).attr("action"),
       data: $(this).serialize(),
       success: function(){
-            location.reload();
+        location.reload();
       },
       error: function() {
-         console.log("entered error function");
-         location.reload();
+        loginBox()
       }
     });
-    return false;
   });
 
-  $('.answervote').submit(function(){
-    console.log($(this));
-    console.log($(this).serialize());
+  $('.answervote').submit(function(e){
+    e.preventDefault();
 
     $.ajax({
       type: "POST",
       url: $(this).attr("action"),
       data: $(this).serialize(),
       success: function(){
-            location.reload();
+        location.reload();
       },
       error: function() {
-         console.log("entered error function");
-         location.reload();
+        loginBox()
       }
     });
-    return false;
   });
 });

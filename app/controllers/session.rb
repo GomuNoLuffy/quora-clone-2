@@ -33,3 +33,6 @@ get '/session/reset' do
 	redirect to('/')
 end
 
+get '/session/loginform' do
+	erb :"session/loginform", :layout => false 
+end

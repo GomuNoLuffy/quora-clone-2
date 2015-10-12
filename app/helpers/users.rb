@@ -21,5 +21,4 @@ helpers do
   def add_user_id(hash)
     hash.merge({"user_id" => current_user.id})
   end
-
 end

@@ -4,6 +4,6 @@ post '/questionvotes/vote' do
 		@questionvote = QuestionVote.create!(@input)
 		redirect to("/questions/#{@input["question_id"]}")
 	else
-		render :status => 401
+		halt 401
 	end
 end

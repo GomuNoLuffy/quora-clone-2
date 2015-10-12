@@ -5,6 +5,6 @@ post '/answervotes/vote' do
 		AnswerVote.create!(@input)
 		redirect to("/questions/#{@answer.question_id}")
 	else
-		render :status => 401
+		halt 401
 	end
 end
