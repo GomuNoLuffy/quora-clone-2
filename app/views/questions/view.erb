@@ -9,6 +9,17 @@
 				Anonymous
 			<% end %>
 		</p>
+				  <span class="small"><p>Tags: 
+				  <% if @question.tags !=  nil %>
+					  <% @question.tags.each do |tag| %>
+					  	<a href="/tags/<%= tag.id %>">
+					  	<%= tag.name %>,
+					  	</a>
+					  <% end %>
+				  <% end %>
+				  
+				  </p></span>
+
 		<span class="more">
 			<p class="normal"><%= simple_format(@question.description) %></p>
 		</span>
@@ -55,7 +66,7 @@
 			<li class="list-group-item">
 				  <span class="norm">Submitted By: <%= answer.user.username %></a></span>
 				  <br>
-				  <span class="small more"><%= answer.description %></span>
+				  <span class="small more"><%= simple_format(answer.description) %></span>
 
 				  	<p class="small">
 						Upvotes: <%= count_answer_upvotes(answer) %> 

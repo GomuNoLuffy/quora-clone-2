@@ -4,6 +4,7 @@
 		<h2><%= @list_title %></h2>
 		<br>
 	</div>
+	<%= will_paginate @list %>
 	<div>
 		<ul class="list-group">
 			<% @list.each do |question|%>

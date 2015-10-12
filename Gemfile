@@ -26,7 +26,11 @@ gem 'rake'
 # Adding rspec for running unit testing
 gem 'rspec'
 
+# Added byebug for evaluation of bugs
 gem 'byebug'
+
+# Adding Will Paginate for pagination index
+gem 'will_paginate', '~> 3.0.6'
 
 group :development, :test do
 	# Adding shotgun for local web hosting

@@ -2,7 +2,8 @@
 get '/questions' do
 	@page_title = "Quora Clone: Homepage"
 	@list_title = "Most Recent Questions"
-	@list = Question.all.order(updated_at: :desc).limit(10)
+	@list = Question.all.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 3)
+
 	erb :"questions/all"
 end
 
