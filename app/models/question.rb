@@ -4,5 +4,4 @@ class Question < ActiveRecord::Base
 	has_many :answers
 	has_many :question_votes
 	validates :title, length: { maximum: 255 }
-	validates :user_id, presence: true
 end

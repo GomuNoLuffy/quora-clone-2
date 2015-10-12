@@ -21,10 +21,14 @@ end
 
 # create new questions
 post '/questions' do
-	@input = add_user_id(params[:question])
+	if logged_in?
+		@input = add_user_id(params[:question])
+	else 
+		@input = params[:question]
+	end
 	@question_split = @input["description"].split("\n", 2)
 	@input["title"] = @question_split[0]
-	@input["description"] = @question_split[1].gsub!(/\r\n?/, "\n")
+	@input["description"] = @question_split[1].gsub!(/\r\n?/, "\n") if @question_split.length > 1
 	@question = Question.new(@input)
 	puts "[LOG] @question #{@question.description.inspect}"
 	if @question.save

@@ -8,14 +8,18 @@
 
 # create new answer
 post '/answers' do 
-	@input = add_user_id(params[:answer])
-	@answer = Answer.new(@input)
-	if @answer.save
-		redirect to("questions/#{@input["question_id"]}")
-	else 
-		# placeholder for jquery error response
-		@error="You can only post 1 answer for a question. Please edit your previous answer instead"
-		redirect to("/")
+	if logged_in?
+		@input = add_user_id(params[:answer])
+		@answer = Answer.new(@input)
+		if @answer.save
+			redirect to("questions/#{@input["question_id"]}")
+		else 
+			# placeholder for jquery error response
+			@error="You can only post 1 answer for a question. Please edit your previous answer instead"
+			redirect to("/")
+		end
+	else
+		halt 401
 	end
 end
 

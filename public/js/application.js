@@ -194,4 +194,20 @@ $(document).ready(function(){
       }
     });
   });
+
+  $('.newanswer').submit(function(e){
+    e.preventDefault();
+    console.log($(this).serialize())
+    $.ajax({
+      type: "POST",
+      url: $(this).attr("action"),
+      data: $(this).serialize(),
+      success: function(){
+        location.reload();
+      },
+      error: function() {
+        loginBox()
+      }
+    });
+  });
 });
